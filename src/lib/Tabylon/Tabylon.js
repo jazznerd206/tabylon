@@ -77,10 +77,18 @@ Tabylon.defaultProps = {
         width: '100%',
     },
     tabStyle: {
+        titleAlign: 'center',
+        titleAlignActive: 'flex-start',
         style: 'standard',
+        grow: false,
+        bcolor: 'rgba(255, 255, 255, 0.5)',
+        acolor: 'rgba(255,255,255)',
     },
     activeComponentStyle: {
-        bgcolor: 'white'
+        bgcolor: 'rgba(255,255,255)',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     data: [
         {name: 'one', data: 'content one'},
