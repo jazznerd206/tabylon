@@ -1,6 +1,7 @@
 {
-  "name": "tabylon",
-  "version": "0.1.0",
+  "name": "tabylonia",
+  "version": "0.2.0",
+  "private": false,
   "description": "A tab component",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -13,7 +14,8 @@
     "build:package": " rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
     "build:webpack": "webpack",
     "start": "webpack serve --hot",
-    "local": "light-server -s . -p 3000"
+    "local": "light-server -s . -p 3000",
+    "local:examples": "light-server -s examples -p 3000"
   },
   "repository": {
     "type": "git",
