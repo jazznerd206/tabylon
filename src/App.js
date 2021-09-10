@@ -1,10 +1,12 @@
 import React from 'react'
-import { Tabylon } from './lib/index';
+import { Tabylon as Original } from './lib/index';
+import { Tabylon as Import } from '../dist/index';
 
 function App() {
     return (
         <div>
-            <Tabylon />
+            <Original />
+            {/* <Import /> */}
         </div>
     )
 }

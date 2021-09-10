@@ -63,6 +63,7 @@ Tabylon.propTypes = {
     containerStyle: PropTypes.object,
     tabBarStyle: PropTypes.object,
     tabStyle: PropTypes.object,
+    activeComponentStyle: PropTypes.object,
     data: PropTypes.array
 }
 
@@ -97,4 +98,4 @@ Tabylon.defaultProps = {
     ]
 }
 
-export default Tabylon
+export default Tabylon;
