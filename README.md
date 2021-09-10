@@ -5,9 +5,9 @@ this is the first version to be posted to the registry.
 
 Use:
 
-npm i tabylon --save
+npm i tabylonia --save
 
-import Tabylon from 'tabylon'
+import { Tabylon } from 'tabylonia'
 
 ```
 <Tabylon
