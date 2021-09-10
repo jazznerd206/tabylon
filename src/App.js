@@ -1,9 +1,10 @@
 import React from 'react'
+import { Tabylon } from './lib/index';
 
 function App() {
     return (
         <div>
-            App
+            <Tabylon />
         </div>
     )
 }
