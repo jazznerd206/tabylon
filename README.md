@@ -1,5 +1,4 @@
 <h1 align="center">tabylon</h1>
-<p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/The_walls_of_Babylon_and_the_temple_of_Bel.png" alt="Babylon" height="250"></p>
 <p align="center">This package provides a moderately customizable (more in the works!!), lightweight, modern React functional component tabbed container. I found myself building this element often enough to create a package out of it.</p>
 
 
@@ -26,11 +25,11 @@
 
 ```
 <Tabylon
-    containerStyle={non null}
-    tabBarStyle={non null}
-    tabStyle={non null}
-    activeComponentStyle={non null}
-    data=[{non null}[]
+    containerStyle={containerStyle}
+    tabBarStyle={tabBarStyle}
+    tabStyle={tabStyle}
+    activeComponentStyle={activeComponentStyle}
+    data={data}
 />
 ```
 
