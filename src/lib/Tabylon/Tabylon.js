@@ -69,9 +69,9 @@ Tabylon.propTypes = {
 
 Tabylon.defaultProps = {
     containerStyle: {
-        bgcolor: 'black',
-        fcolor: 'black',
-        dcolor: 'white'
+        bgcolor: 'rgba(0,0,0)',
+        fcolor: 'rgba(255,255,255)',
+        dcolor: 'rgba(255,255,255,.5)'
     },
     tabBarStyle: {
         height: '10vh',
