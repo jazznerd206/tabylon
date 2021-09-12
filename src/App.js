@@ -1,13 +1,11 @@
 import React from 'react'
-import { Tabylon as Original } from './lib/index';
-import { Tabylon as Import } from '../dist/index';
+import { Tabylon as Original } from './lib/index.js';
 
 function App() {
     return (
-        <div>
+        <>
             <Original />
-            {/* <Import /> */}
-        </div>
+        </>
     )
 }
 

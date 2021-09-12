@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Trigger } from '../tabylon.layout'
+import { Trigger, TriggerTitle } from '../tabylon.layout.js'
 import PropTypes from 'prop-types';
 
-function Tab({item, id, onClick, tabStyle}) {
+function Tab({item, id, onClick, tabStyle, theme}) {
     return (
         <Trigger
+            theme={theme}
             className='tab'
             item={item}
             id={id}
             onClick={() => onClick(item)}
             tabStyle={tabStyle}
         >
-            {item.name}
+            <TriggerTitle tabStyle={tabStyle} className="text">{item.name}</TriggerTitle>
         </Trigger>
     )
 }

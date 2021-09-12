@@ -1,3 +1,3 @@
-import Tabylon from './Tabylon/Tabylon';
+import Tabylon from './Tabylon/Tabylon.js';
 
 export { Tabylon }
