@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Children } from 'react';
+import { TabBar as TB } from '../tabylon.layout.js';
 
-function TabBar() {
+function TabBar({tabBarStyle, theme, children}) {
     return (
-        <div>
-            
-        </div>
+        <TB
+            tabBarStyle={tabBarStyle}
+            theme={theme}
+        >
+            {children}
+        </TB>
     )
 }
 

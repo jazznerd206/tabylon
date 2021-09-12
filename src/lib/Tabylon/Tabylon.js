@@ -1,34 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import Theme, { themes } from './utils/themes.js'
 import PropTypes from 'prop-types';
-import { Tab, ActiveComponent } from './components/index.js';
-import { Container, TabBar } from './tabylon.layout.js';
+import { TabBar, Tab, ActiveComponent } from './components/index.js';
+import { Container } from './tabylon.layout.js';
 import { getLocation } from './utils/getLocation.js';
 
 
 function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data}) {
 
-    const [ active, setActive ] = useState({});
-    const [ theme, useTheme ] = useState(themes.standard);
+    const [ active, setActive ] = useState(data[0]);
+    const [ theme, useTheme ] = useState(themes.light);
 
     const activateTab = data => {
+        setActive(data);
         let tabs = document.getElementsByClassName(`tab`);
         for (let i = 0; i < tabs.length; ++i) {
             if (tabs[i].id === data.name) {
-                tabs[i].classList.toggle('active');
-                if (tabStyle.spotlight === true) {
-                    getLocation(tabs[i]);
-                }
+                if (tabs[i].classList.contains('active')) return;
+                else tabs[i].classList.add('active');
+                // if (tabStyle.spotlight === true) {
+                //     getLocation(tabs[i]);
+                // }
             } else {
                 tabs[i].classList.remove('active');
             }
         }
-        setActive(data);
     }
 
     useEffect(() => {
-        activateTab(data[0])
+        setActive(data[0]);
+        activateTab(data[0]);
     }, [])
+
+    useEffect(() => {
+        console.log(`active`, active);
+    }, [active])
 
     if (data === {}) return (
         <Container
@@ -87,6 +93,8 @@ Tabylon.defaultProps = {
     tabBarStyle: {
         height: '10vh',
         width: '100%',
+        justify: 'space-evenly',
+        justifyBrowser: 'flex-start',
     },
     tabStyle: {
         spotlight: false,

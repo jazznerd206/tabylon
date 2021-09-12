@@ -23,7 +23,7 @@ export const TabBar = styled.div`
     display: flex;
     flex-direction: row;
     flex: 1 1 auto;
-    justify-content: space-around;
+    justify-content: ${props => props.theme.name === 'browser' ? props.tabBarStyle.justifyBrowser : props.tabBarStyle.justify };
     align-items: center;
     overflow-x: visible;
     overflow-y: visible;
@@ -38,55 +38,60 @@ export const TriggerTitle = styled.p`
 `
 
 export const Trigger = styled.div`
+    transition: ${props => props.theme.transitions === true ? `all .25s ease-in-out` : `all 0s ease-in-out`};
+    flex: ${props => props.tabStyle.grow === false ? '1 1 auto' : '0 1 auto' };
+    justify-content: ${props => props.theme.name === 'browser' ? 'flex-start' : 'flex-end'};
     background: ${props => props.theme.tabBG};
     color: ${props => props.theme.fontColor};
-    height: auto;
-    min-height: fit-content;
-    min-width: fit-content;
-    margin-top: 1em;
-    margin-right: 1em;
-    margin-bottom: 1em;
-    margin-left: 1em;
-    padding: 1em 2em;
     border: 1px solid ${props => props.theme.tabBorder};
     border-radius: ${props => props.theme.tabBorderRadius === true ? '25px' : '0px'};
+    height: ${props => props.theme.name === 'browser' ? '30%' : 'auto'};
+    min-height: fit-content;
+    min-width: fit-content;
+    max-width: ${props => props.theme.name === 'browser' ? '250px' : null};
+    margin-top: ${props => props.theme.name === 'browser' ? '0' : '1em'};
+    margin-right: ${props => props.theme.name === 'browser' ? '0' : '1em'};
+    margin-bottom: ${props => props.theme.name === 'browser' ? '0' : '1em'};
+    margin-left: ${props => props.theme.name === 'browser' ? '0' : '1em'};
+    padding: 1em 2em;
     display: flex;
-    flex: ${props => props.tabStyle.grow === false ? '1 1 auto' : '0 1 auto' };
-    justify-content: ${props => props.tabStyle.titleAlign};
     align-items: center;
     cursor: pointer;
     z-index: 0;
     &.active {
+        justify-content: ${props => props.tabStyle.titleAlignActive};
         background: ${props => props.theme.activeTabBG};
         color: ${props => props.theme.activeTabFontColor};
-        overflow: visible;
+        height: 105%;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: ${props => props.theme.name === 'browser' ? '0px' : '25px'};
+        border-bottom-right-radius: ${props => props.theme.name === 'browser' ? '0px' : '25px'};
         text-transform: uppercase;
-        height: 100%;
-        min-height: 2em;
         border-bottom: none;
-        border-radius: ${props => props.theme.tabBorderRadius === true ? '0px' : '25px'};
         flex: 1 1 auto;
-        justify-content: ${props => props.tabStyle.titleAlignActive};
+        overflow: visible;
         ${TriggerTitle} {
             color: ${props => props.theme.fontColor};
         }
         &:first-child {
             margin-left: 0;
+            border-bottom-left-radius: 0px;
         }
         &:last-child {
             margin-right: 0;
+            border-bottom-right-radius: 0px;
         }
     }
-    transition: all .25s ease-in-out;
 `
 
 export const ActiveContainer = styled.div`
-    background: ${props => props.theme.activeBG};
-    padding: ${props => props.theme.activePadding};
-    height: 100%;
-    width: 100%;
     display: flex;
     flex: 1 1 auto;
     justify-content: ${props => props.activeComponentStyle.justifyContent};
     align-items: ${props => props.activeComponentStyle.alignItems};
+    background: ${props => props.theme.activeBG};
+    padding: ${props => props.theme.activePadding};
+    height: 100%;
+    width: 100%;
 `
