@@ -3,7 +3,7 @@ import Theme, { themes } from './utils/themes.js'
 import PropTypes from 'prop-types';
 import { TabBar, Tab, ActiveComponent } from './components/index.js';
 import { Container } from './tabylon.layout.js';
-import { getLocation } from './utils/getLocation.js';
+// import { getLocation } from './utils/getLocation.js';
 
 
 function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data}) {
@@ -32,9 +32,9 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
         activateTab(data[0]);
     }, [])
 
-    useEffect(() => {
-        console.log(`active`, active);
-    }, [active])
+    // useEffect(() => {
+    //     console.log(`active`, active);
+    // }, [active])
 
     if (data === {}) return (
         <Container
@@ -113,9 +113,24 @@ Tabylon.defaultProps = {
         alignItems: 'center',
     },
     data: [
-        {name: 'one', data: 'content one'},
-        {name: 'two', data: 'content two'},
-        {name: 'three', data: 'content three'},
+        {
+            name: 'one', 
+            tabContent: 'First',
+            activeTabContent: '',
+            data: 'content one'
+        },
+        {
+            name: 'two', 
+            tabContent: 'Second',
+            activeTabContent: '',
+            data: 'content two'
+        },
+        {
+            name: 'three', 
+            tabContent: 'Third',
+            activeTabContent: '',
+            data: 'content three'
+        },
     ]
 }
 

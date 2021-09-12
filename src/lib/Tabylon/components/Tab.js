@@ -12,7 +12,7 @@ function Tab({item, id, onClick, tabStyle, theme}) {
             onClick={() => onClick(item)}
             tabStyle={tabStyle}
         >
-            <TriggerTitle tabStyle={tabStyle} className="text">{item.name}</TriggerTitle>
+            <TriggerTitle tabStyle={tabStyle} className="text">{item.tabContent}</TriggerTitle>
         </Trigger>
     )
 }
