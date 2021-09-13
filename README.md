@@ -30,6 +30,7 @@
     tabStyle={tabStyle}
     activeComponentStyle={activeComponentStyle}
     data={data}
+    themeType='light'
 />
 ```
 
@@ -60,7 +61,7 @@ containerStyle = {
 
 ```
 tabBarStyle: {
-        height: '10vh',
+        height: '5em',
         width: '100%',
     }
 ```
@@ -107,6 +108,10 @@ activeComponentStyle = {
     }
 ```
 
+<h1 align="center">theme = ""</h1>
+<p align="center">There are only three options to pass here, standard and light and browser (more coming soon!!). pick you favorite or design a brand new one using the available styling props (see above)</p>
+
+```themeType = 'light' || themeType = 'stamdard' || themeType = 'browser'```
 
 
 <h1 align="center">data = []</h1>
@@ -125,11 +130,83 @@ data = [
 
 ``` 
 Component passing, the component passed into the data property will show up in the active container panel.
-data = [
-    {name: 'Component Name', data: <Component One />},
-    {name: 'Component Name', data: <Component One />},
-    ... etc. 
-    ]
+data: [
+        {
+            name: 'one', 
+            tabContent: {
+                subtitle: 'Weather',
+            },
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'A weather component'
+        },
+        {
+            name: 'two', 
+            tabContent: {
+                subtitle: 'Finance',
+            },
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'Maybe import something from stocker?'
+        },
+        {
+            name: 'three', 
+            tabContent: {
+                subtitle: 'Golf',
+            },
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'Tiger Woods instagram feed'
+        },
+        {
+            name: 'four', 
+            tabContent: {
+                subtitle: 'Random',
+            },
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'Random content, placeholder for now'
+        },
 ```
 
 <hr>
