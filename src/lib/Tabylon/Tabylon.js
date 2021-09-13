@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Theme, { themes } from './utils/themes.js'
 import PropTypes from 'prop-types';
 import { TabBar, Tab, ActiveComponent } from './components/index.js';
-import { Container } from './tabylon.layout.js';
-// import { getLocation } from './utils/getLocation.js';
-
+import { Container, TriggerTitle } from './tabylon.layout.js';
+import { ArrowsExpand } from '@styled-icons/heroicons-outline/ArrowsExpand'
+import Title from './components/text/Title.js';
+import TabComponent from './components/text/TabComponent.js';
 
 function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data}) {
 
     const [ active, setActive ] = useState(data[0]);
-    const [ theme, useTheme ] = useState(themes.light);
+    const [ theme, setTheme ] = useState(themes.browser);
 
     const activateTab = data => {
         setActive(data);
@@ -18,9 +19,7 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
             if (tabs[i].id === data.name) {
                 if (tabs[i].classList.contains('active')) return;
                 else tabs[i].classList.add('active');
-                // if (tabStyle.spotlight === true) {
-                //     getLocation(tabs[i]);
-                // }
+
             } else {
                 tabs[i].classList.remove('active');
             }
@@ -32,10 +31,6 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
         activateTab(data[0]);
     }, [])
 
-    // useEffect(() => {
-    //     console.log(`active`, active);
-    // }, [active])
-
     if (data === {}) return (
         <Container
             containerStyle={containerStyle}
@@ -45,6 +40,7 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
         </Container>
     )
     else return (
+    <Theme theme={theme}>
         <Container
             containerStyle={containerStyle}
             theme={theme}
@@ -54,7 +50,7 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
                 tabBarStyle={tabBarStyle}
             >
                 {data.map((item, index) => {
-                    return (
+                    if (item.name === active.name && theme.name === 'browser') return (
                         <Tab 
                             theme={theme}
                             tabStyle={tabStyle}
@@ -62,7 +58,28 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
                             id={item.name}
                             key={`tab${index}`}
                             onClick={activateTab}
-                        />
+                        >
+                            <TabComponent item={item} theme={theme}/>
+                        </Tab>
+                    )
+                    else return (
+                        <Tab 
+                            theme={theme}
+                            tabStyle={tabStyle}
+                            item={item}
+                            id={item.name}
+                            key={`tab${index}`}
+                            onClick={activateTab}
+                        >
+                            
+                            {theme.name === 'browser' && <ArrowsExpand size={24} />}
+                            <TriggerTitle 
+                                tabStyle={tabStyle} 
+                                className="text"
+                            >
+                                <Title size={tabStyle.fontSize}>{item.tabContent.subtitle}</Title>
+                            </TriggerTitle>
+                        </Tab>
                     )
                 })}
             </TabBar>
@@ -72,6 +89,7 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
                 activeItem={active}
             />
         </Container>
+    </Theme>
     )
 }
 
@@ -91,7 +109,7 @@ Tabylon.defaultProps = {
         border: true
     },
     tabBarStyle: {
-        height: '10vh',
+        height: '5em',
         width: '100%',
         justify: 'space-evenly',
         justifyBrowser: 'flex-start',
@@ -99,12 +117,12 @@ Tabylon.defaultProps = {
     tabStyle: {
         spotlight: false,
         titleAlign: 'center',
-        titleAlignActive: 'flex-start',
+        titleAlignActive: 'center',
         style: 'standard',
         grow: false,
         bcolor: 'rgba(255, 255, 255, 0.5)',
         acolor: 'rgba(255,255,255)',
-        activeFontColor: 'rgba(0,0,0)'
+        activeFontColor: 'rgba(0,0,0)',
     },
     activeComponentStyle: {
         bgcolor: 'rgba(255,255,255)',
@@ -115,22 +133,49 @@ Tabylon.defaultProps = {
     data: [
         {
             name: 'one', 
-            tabContent: 'First',
+            tabContent: {
+                subtitle: 'Weather',
+                elOne: 'link here',
+                elTwo: 'link here',
+
+            },
             activeTabContent: '',
             data: 'content one'
         },
         {
             name: 'two', 
-            tabContent: 'Second',
+            tabContent: {
+                subtitle: 'Finance',
+                elOne: 'link here',
+                elTwo: 'link here',
+
+            },
             activeTabContent: '',
             data: 'content two'
         },
         {
             name: 'three', 
-            tabContent: 'Third',
+            tabContent: {
+                subtitle: 'Golf',
+                elOne: 'link here',
+                elTwo: 'link here',
+
+            },
             activeTabContent: '',
             data: 'content three'
         },
+        {
+            name: 'four', 
+            tabContent: {
+                subtitle: 'Random',
+                elOne: 'link here',
+                elTwo: 'link here',
+
+            },
+            activeTabContent: '',
+            data: 'content four'
+        },
+        
     ]
 }
 

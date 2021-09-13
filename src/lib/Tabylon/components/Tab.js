@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Trigger, TriggerTitle } from '../tabylon.layout.js'
+import { Trigger } from '../tabylon.layout.js'
 import PropTypes from 'prop-types';
 
-function Tab({item, id, onClick, tabStyle, theme}) {
+
+
+function Tab({item, id, onClick, tabStyle, theme, children}) {
     return (
         <Trigger
             theme={theme}
@@ -12,7 +14,8 @@ function Tab({item, id, onClick, tabStyle, theme}) {
             onClick={() => onClick(item)}
             tabStyle={tabStyle}
         >
-            <TriggerTitle tabStyle={tabStyle} className="text">{item.tabContent}</TriggerTitle>
+            
+            {children}
         </Trigger>
     )
 }
