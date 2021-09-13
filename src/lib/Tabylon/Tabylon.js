@@ -7,7 +7,7 @@ import { ArrowsExpand } from '@styled-icons/heroicons-outline/ArrowsExpand'
 import Title from './components/text/Title.js';
 import TabComponent from './components/text/TabComponent.js';
 
-function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data, themeType}) {
+function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data, themeType, height, width, margin}) {
 
     const [ active, setActive ] = useState(data[0]);
     const [ theme, setTheme ] = useState(themes.light);
@@ -58,6 +58,9 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
     else return (
         <Container
             containerStyle={containerStyle}
+            height={height}
+            width={width}
+            margin={margin}
             theme={theme}
         >
             <TabBar 
@@ -221,7 +224,10 @@ Tabylon.defaultProps = {
         },
         
     ],
-    themeType: 'standard',
+    themeType: 'browser',
+    height: '100%',
+    width: '100%',
+    margin: '0 auto'
 }
 
 export default Tabylon;

@@ -11,14 +11,11 @@ export const Box = styled.div`
 `
 
 export const Container = styled.div`
-    margin: 0;
+    margin: ${props => props.margin};
     padding: 0;
     background: ${props => props.theme.containerBG === undefined ? 'none': props.theme.containerBG};
-    height: 100%auto;
-    width: 100%;
-    /* max-height: 50vh;
-    width: 50vw;
-    margin: 0 auto; */
+    height: ${props => props.height};
+    width: ${props => props.width};
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;

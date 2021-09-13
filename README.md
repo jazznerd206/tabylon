@@ -108,10 +108,23 @@ activeComponentStyle = {
     }
 ```
 
-<h1 align="center">theme = ""</h1>
+<h1 align="center">themeType = ""</h1>
 <p align="center">There are only three options to pass here, standard and light and browser (more coming soon!!). pick you favorite or design a brand new one using the available styling props (see above)</p>
 
 ```themeType = 'light' || themeType = 'stamdard' || themeType = 'browser'```
+
+
+<h1 align="center">height = "" && width = ""</h1>
+<p align="center">these are for setting the size of the element inside the parent container. Use vh/vw for sizing relative to window and percentages for relative to parent element. starts at 100%, takes entire space of parent element.</p>
+
+
+```height = '100%'```
+
+<h1 align="center">margin = ""</h1>
+<p align="center">initialized at '0 auto' to compensate for centering <'100%' width element</p>
+
+
+```margin = '0 auto'```
 
 
 <h1 align="center">data = []</h1>
