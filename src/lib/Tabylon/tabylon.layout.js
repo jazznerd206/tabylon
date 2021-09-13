@@ -25,14 +25,14 @@ export const Container = styled.div`
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
-    border: ${props => props.containerStyle.border === true ? props.theme.border : 'none'};
+    border: ${props => props.theme.containerBorder === true ? props.theme.border : 'none'};
 `
 
 export const TabBar = styled.div`
     background: ${props => props.theme.tabBarBG};
     height: ${props => props.tabBarStyle.height || '5em'};
     width: 100%;
-    /* padding: 0 1em; */
+    padding: 0 1em;
     display: flex;
     flex-direction: row;
     flex: 0 1 auto;
@@ -128,14 +128,29 @@ export const ActiveContainer = styled.div`
 `
 
 export const TabContainer = styled.div`
-    width: 100%;
-    height: 100%;
+    min-height: fit-content;
+    min-width: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    flex: 1 1 auto;
+    flex: ${props => props.tabStyle.grow === false ? '1 1 auto' : '0 1 auto' };
     color: ${props => props.theme.activeTabFontColor};
+    padding: 1em 2em;
+    color: ${props => props.theme.activeTabFontColor};
+    height: ${props => props.theme.name !== 'standard' ? '105%' : '100%'};
+    border: ${props => props.theme.tabBorder !== true ? '.5px solid black' : 'none'};
+    &:first-child {
+        margin-left: 0;
+        border-left: none;
+        border-bottom-left-radius: 0px;
+    }
+    &:last-child {
+        margin-right: 0;
+        border-right: none;
+        border-bottom-right-radius: 0px;
+    }
+    
 `
 
 export const TitleText = styled.span`
@@ -145,11 +160,12 @@ export const TitleText = styled.span`
 export const SubTitleText = styled.span`
     text-transform: none;
     font-variant: small-caps;
-    font-size: ${props => props.theme.fontSizeActive}
+    font-size: ${props => props.theme.fontSizeActive};
 `
 
 export const TabLink = styled.a`
-    text-transform: none;
+    text-transform: lowercase;
+    font-size: .75em;
     padding: 0;
     margin: 0;
     text-decoration: none;

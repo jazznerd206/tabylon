@@ -7,10 +7,10 @@ import { ArrowsExpand } from '@styled-icons/heroicons-outline/ArrowsExpand'
 import Title from './components/text/Title.js';
 import TabComponent from './components/text/TabComponent.js';
 
-function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data}) {
+function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, data, themeType}) {
 
     const [ active, setActive ] = useState(data[0]);
-    const [ theme, setTheme ] = useState(themes.browser);
+    const [ theme, setTheme ] = useState(themes.light);
 
     const activateTab = data => {
         setActive(data);
@@ -31,6 +31,22 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
         activateTab(data[0]);
     }, [])
 
+    useEffect(() => {
+        switch(themeType) {
+            case 'light':
+                setTheme(themes.light);
+                break;
+            case 'standard':
+                setTheme(themes.standard);
+                break;
+            case 'browser':
+                setTheme(themes.browser);
+                break;
+            default:
+                break;
+        }
+    }, [themeType])
+
     if (data === {}) return (
         <Container
             containerStyle={containerStyle}
@@ -40,7 +56,6 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
         </Container>
     )
     else return (
-    <Theme theme={theme}>
         <Container
             containerStyle={containerStyle}
             theme={theme}
@@ -50,17 +65,15 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
                 tabBarStyle={tabBarStyle}
             >
                 {data.map((item, index) => {
-                    if (item.name === active.name && theme.name === 'browser') return (
-                        <Tab 
-                            theme={theme}
+                    if (item.name === active.name) return (
+                        <TabComponent 
+                            item={item} 
+                            theme={theme} 
+                            id={item.name} 
                             tabStyle={tabStyle}
-                            item={item}
-                            id={item.name}
-                            key={`tab${index}`}
                             onClick={activateTab}
-                        >
-                            <TabComponent item={item} theme={theme}/>
-                        </Tab>
+                            key={`tab${index}`}
+                        />
                     )
                     else return (
                         <Tab 
@@ -69,7 +82,7 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
                             item={item}
                             id={item.name}
                             key={`tab${index}`}
-                            onClick={activateTab}
+                            onClick={() => activateTab(item)}
                         >
                             
                             {theme.name === 'browser' && <ArrowsExpand size={24} />}
@@ -89,7 +102,6 @@ function Tabylon({containerStyle, tabBarStyle, tabStyle, activeComponentStyle, d
                 activeItem={active}
             />
         </Container>
-    </Theme>
     )
 }
 
@@ -135,48 +147,81 @@ Tabylon.defaultProps = {
             name: 'one', 
             tabContent: {
                 subtitle: 'Weather',
-                elOne: 'link here',
-                elTwo: 'link here',
-
             },
-            activeTabContent: '',
-            data: 'content one'
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'A weather component'
         },
         {
             name: 'two', 
             tabContent: {
                 subtitle: 'Finance',
-                elOne: 'link here',
-                elTwo: 'link here',
-
             },
-            activeTabContent: '',
-            data: 'content two'
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'Maybe import something from stocker?'
         },
         {
             name: 'three', 
             tabContent: {
                 subtitle: 'Golf',
-                elOne: 'link here',
-                elTwo: 'link here',
-
             },
-            activeTabContent: '',
-            data: 'content three'
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'Tiger Woods instagram feed'
         },
         {
             name: 'four', 
             tabContent: {
                 subtitle: 'Random',
-                elOne: 'link here',
-                elTwo: 'link here',
-
             },
-            activeTabContent: '',
-            data: 'content four'
+            activeTabContent: {
+                elOne: {
+                    title: 'link one',
+                    alt: 'link one',
+                    link: '/'
+                },
+                elTwo: {
+                    title: 'link two',
+                    alt: 'link two',
+                    link: '/'
+                },
+            },
+            data: 'Random content, placeholder for now'
         },
         
-    ]
+    ],
+    themeType: 'standard',
 }
 
 export default Tabylon;

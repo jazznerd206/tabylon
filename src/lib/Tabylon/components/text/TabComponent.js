@@ -3,19 +3,22 @@ import { Box, TabLink, SubTitleText, TabContainer } from '../../tabylon.layout.j
 import { ArrowsExpand } from '@styled-icons/heroicons-outline/ArrowsExpand'
 
 
-function TabComponent({item, theme}) {
-    return (
-        <TabContainer>
-            {/* <Box theme={theme}>
-                {theme.name === 'browser' && <ArrowsExpand size={24} />}
-            </Box> */}
+function TabComponent({item, theme, id, tabStyle}) {
+
+    console.log(`theme.name`, tabStyle)
+    if (item === undefined) return null;
+    else if (theme === undefined) return null;
+    else return (
+        <TabContainer className="tab" id={id} tabStyle={tabStyle}>
             <Box>
                 <SubTitleText>{item.tabContent.subtitle}</SubTitleText>
             </Box>
-            <Box>
-                <TabLink>{item.tabContent.elOne}</TabLink>
-                <TabLink>{item.tabContent.elTwo}</TabLink>
-            </Box>
+            {theme.name === 'browser' && 
+             <Box>
+                <TabLink item={item}>{item.activeTabContent.elOne.title}</TabLink>
+                <TabLink item={item}>{item.activeTabContent.elTwo.title}</TabLink>
+            </Box>}
+           
         </TabContainer>
     )
 }
