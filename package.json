@@ -3,6 +3,7 @@
   "version": "0.3.2",
   "private": false,
   "description": "A tab component",
+  "keywords": ["tab", "tabs", "React", "tabylon", "tabylonia"],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
