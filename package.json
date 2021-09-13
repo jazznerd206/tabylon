@@ -1,9 +1,15 @@
 {
   "name": "tabylonia",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": false,
   "description": "A tab component",
-  "keywords": ["tab", "tabs", "React", "tabylon", "tabylonia"],
+  "keywords": [
+    "tab",
+    "tabs",
+    "React",
+    "tabylon",
+    "tabylonia"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
