@@ -43,7 +43,7 @@ export const Trigger = styled.div`
     justify-content: ${props => props.theme.name === 'browser' ? 'flex-start' : 'flex-end'};
     background: ${props => props.theme.tabBG};
     color: ${props => props.theme.fontColor};
-    border: .5px solid;
+    border: ${props => props.theme.tabBorder === true ? `.5px solid` : 'none'};
     border-top-left-radius: ${props => props.theme.name === 'light' ? '25px' : '0px'};
     border-top-right-radius: ${props => props.theme.name === 'light' ? '25px' : '0px'};
     border-bottom-left-radius: 0px;
@@ -66,11 +66,13 @@ export const Trigger = styled.div`
         justify-content: ${props => props.tabStyle.titleAlignActive};
         background: ${props => props.theme.activeTabBG};
         color: ${props => props.theme.activeTabFontColor};
-        height: 105%;
+        height: ${props => props.theme.name === 'standard' ? '105%' : '100%'};
+        border: ${props => props.theme.tabBorder === true ? 'none' : '.5px solid black'};
+        border-bottom: none;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
-        border-bottom-left-radius: ${props => props.theme.name === 'browser' ? '0px' : '25px'};
-        border-bottom-right-radius: ${props => props.theme.name === 'browser' ? '0px' : '25px'};
+        border-bottom-left-radius: ${props => props.theme.tabBorderRadius === true ? '25px' : '0px'};
+        border-bottom-right-radius: ${props => props.theme.tabBorderRadius === true ? '25px' : '0px'};
         text-transform: uppercase;
         flex: 1 1 auto;
         overflow: visible;
@@ -79,10 +81,12 @@ export const Trigger = styled.div`
         }
         &:first-child {
             margin-left: 0;
+            border-left: none;
             border-bottom-left-radius: 0px;
         }
         &:last-child {
             margin-right: 0;
+            border-right: none;
             border-bottom-right-radius: 0px;
         }
     }
