@@ -1,5 +1,11 @@
 <h1 align="center">tabylon</h1>
-<p align="center">This package provides a moderately customizable (more in the works!!), lightweight, modern React functional component tabbed container. I found myself building this element often enough to create a package out of it.</p>
+<p align="center">This package provides a moderately customizable (more in the works!!), lightweight, modern React functional component tabbed container.</p>
+<p align="center">The impetus behind this project was creating a UI driven by a data object, rather than a DOM tree. I have always found thick DOM trees more difficult to read and write than standard data objects. By carefully crafting an array of data, just like you would for a graph visualization, you can create a tabbed data container with just one line of HTML and just a few props.</p>
+
+
+<p align="center">
+    <img src="images/TabylonPic1.png" height="250" width="auto">
+</p>
 
 
 ## PREQREQUISITES:
@@ -56,8 +62,8 @@ containerStyle = {
 
 | Name | PropType | Default value | Description |
 | :--- | :------- | :------ | :---------- |
-| height | string | '10vh'| starting height of tab bar |
-| width | string | '10%'| starting width of tab bar |
+| height | string | '5em'| starting height of tab bar |
+| width | string | '100%'| starting width of tab bar |
 
 ```
 tabBarStyle: {
@@ -111,14 +117,36 @@ activeComponentStyle = {
 <h1 align="center">themeType = ""</h1>
 <p align="center">There are only three options to pass here, standard and light and browser (more coming soon!!). pick you favorite or design a brand new one using the available styling props (see above)</p>
 
-```themeType = 'light' || themeType = 'stamdard' || themeType = 'browser'```
+```themeType = 'light' OR themeType = 'standard' OR themeType = 'browser'```
 
 
 <h1 align="center">height = "" && width = ""</h1>
 <p align="center">these are for setting the size of the element inside the parent container. Use vh/vw for sizing relative to window and percentages for relative to parent element. starts at 100%, takes entire space of parent element.</p>
 
 
-```height = '100%'```
+```height = '100%'```<p>     </p>
+```width = '100%'```
+<hr>
+
+<h2 align="center"><strong>THE CURRENT STATE OF SIZING THE ELEMENT</strong></h2> 
+
+### __Until I can really nail down the sizing of the element by passing props (doesn't quite work the way I expected it too... I guess I should have expected that), use a parent element inside the client to generate size constraints and leaving the height and width props at 100% OR not including them at all as they are packaged as defaults anyway__
+
+```
+<div className="holder">
+    <Tabylon (...props) />
+</div>
+________________________
+
+.holder {
+    width: 50%;
+    max-height: 50%;
+    display: flex;
+    flex: 1 1 auto;
+}
+```
+
+<hr>
 
 <h1 align="center">margin = ""</h1>
 <p align="center">initialized at '0 auto' to compensate for centering <'100%' width element</p>
@@ -127,22 +155,16 @@ activeComponentStyle = {
 ```margin = '0 auto'```
 
 
+
 <h1 align="center">data = []</h1>
 <p align="center">This is where the magic happens. All of the tabs as well as the managment of the active container are run from the data object. The reason I designed it this way was to give the developer the greatest freedom in combination with the high iteration speed. By passing an array of specifically crafted data objects, perhaps collated from database call or API hits, all UI management is taken care of without adding a confusing tree of HTML elements. Following are two examples of how to pass data to the active component as it stands.</p>
 
-__Each constituent object of the data array must have at least two named properties, name and data. Name is the tab name and data is the active panel content.__
-``` 
-Basic data passing, the string 'content ${num}' will show up in the active container panel.
-data = [
-    {name: 'one', data: 'content one'},
-    {name: 'two', data: 'content two'},
-    ... etc. 
-    ]
-```
-
+__Each constituent object of the data array must have at least three named properties, name, tabContent.subtitle and data. Name is the tab identifier, tabContent.subtitle is the text content of the tab, and data is the component passed to the active panel.__
 
 ``` 
-Component passing, the component passed into the data property will show up in the active container panel.
+THE DATA OBJECT:
+the component passed into the data property will show up in the active container panel.
+
 data: [
         {
             name: 'one', 
@@ -161,7 +183,7 @@ data: [
                     link: '/'
                 },
             },
-            data: 'A weather component'
+            data: <Component />
         },
         {
             name: 'two', 
@@ -180,7 +202,7 @@ data: [
                     link: '/'
                 },
             },
-            data: 'Maybe import something from stocker?'
+            data: <Component />
         },
         {
             name: 'three', 
@@ -199,7 +221,7 @@ data: [
                     link: '/'
                 },
             },
-            data: 'Tiger Woods instagram feed'
+            data: <Component />
         },
         {
             name: 'four', 
@@ -218,9 +240,16 @@ data: [
                     link: '/'
                 },
             },
-            data: 'Random content, placeholder for now'
+            data: <Component />
         },
 ```
+
+<p align="center">
+    <video controls width="600">
+        <source src="images/TabylonVid1.mov">
+    </video>
+</p>
+
 
 <hr>
 
